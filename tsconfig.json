@@ -6,9 +6,7 @@
     "baseUrl": "./",
     "moduleResolution": "node",
     "strictNullChecks": true,
-    "paths": {
-      "otter": ["./src"]
-    }
+    "strict": true
   },
   "include": [
     "./src/**/*"

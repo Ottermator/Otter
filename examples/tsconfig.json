@@ -2,7 +2,11 @@
   "extends": "../tsconfig.json",
   "compilerOptions": {
     "paths": {
-      "otter": ["./src"]
-    }
-  }
+      "otter": ["./src"],
+      "otter/*": ["./src/*"]
+    },
+  },
+  "include": [
+    "./**/*"
+  ]
 }
