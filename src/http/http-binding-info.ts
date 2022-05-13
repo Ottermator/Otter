@@ -1,6 +1,6 @@
 import {HttpMethod} from '../types';
 
-export type HttpBindingInfo = {
+export type HttpBindingInfo<TParams extends string> = {
   type: 'http';
   route: {
     method: HttpMethod,

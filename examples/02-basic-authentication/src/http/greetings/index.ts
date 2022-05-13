@@ -12,7 +12,11 @@ export default controller(
     authenticate(),
     extract(
       Extract.from.authentication(),
-      Extract.from.url('hello')
+      Extract.from.url('hello'),
+      Extract.from.url('world'),
+      Extract.from.url('brah'),
+      Extract.from.url('bruh'),
+      Extract.from.url('bruh'),
     )
   ).build(),
 );

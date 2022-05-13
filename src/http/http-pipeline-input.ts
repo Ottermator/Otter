@@ -1,5 +1,7 @@
 import * as e from 'express';
 
-export type HttpPipelineInput = {
-  req: e.Request;
+type Params<TParamNames extends string> = Record<TParamNames, string>;
+
+export type HttpPipelineInput<TParamNames extends string = string> = {
+  req: e.Request<Params<TParamNames>>;
 }

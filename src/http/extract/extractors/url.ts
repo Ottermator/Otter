@@ -2,8 +2,8 @@ import {PartialExtractor} from 'src/extract';
 import {HttpPipelineInput} from 'src/http';
 
 export function url<
-  TInput extends HttpPipelineInput,
-  TParam extends string
+  TParam extends string,
+  TInput extends HttpPipelineInput<TParam>,
 >(param: TParam): PartialExtractor<
   TInput,
   { [K in TParam]: string }
