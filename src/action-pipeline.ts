@@ -2,7 +2,8 @@ import {Awaitable, Op} from 'src/types';
 
 export type InvokableActionPipeline<TInput, TOutput, TBindingInfo> =
   & ((input: TInput) => Awaitable<TOutput>)
-  & { bindingInfo: TBindingInfo };
+  & { bindingInfo: TBindingInfo }
+  & { type: 'InvokableActionPipeline' };
 
 export class ActionPipeline<
   TInput,
@@ -30,6 +31,7 @@ export class ActionPipeline<
       return intermediate;
     };
     pipeline.bindingInfo = this.bindingInfo;
+    pipeline.type = 'InvokableActionPipeline' as const;
     return pipeline;
   }
 

@@ -1,10 +1,12 @@
 import {readdir} from 'fs/promises'
 import {HttpController} from 'src/http';
 import {Express} from 'express';
+import {HttpOptions} from 'src/http/startup/http-options';
+import {HttpErrorPattern} from 'src/http/http-error-pattern';
 
-export async function discoverHttpControllers(app: Express) {
+export async function discoverHttpControllers(app: Express, options: HttpOptions) {
   const controllers = await search('', `${process.cwd()}/src/http`);
-  controllers.forEach(c => load(c, app));
+  controllers.forEach(c => load(c, app, options));
 }
 
 type DiscoveredController = {
@@ -12,7 +14,7 @@ type DiscoveredController = {
   path: string;
 }
 
-function load(info: DiscoveredController, app: Express) {
+function load(info: DiscoveredController, app: Express, options: HttpOptions) {
   const { default: controller } = require(info.path);
   if (!(controller instanceof HttpController)) {
     console.log(`Illegal export of an index file in http: ${info.path}`);
@@ -20,7 +22,11 @@ function load(info: DiscoveredController, app: Express) {
   }
 
   console.log(`Registering controller with prefix: ${info.prefix}/`)
-  controller.register(app, info.prefix);
+  controller.register(
+    app,
+    info.prefix,
+    HttpErrorPattern.fromMany(options.errors ?? []),
+  );
 }
 
 async function search(prefix: string, directory: string): Promise<Array<DiscoveredController>> {

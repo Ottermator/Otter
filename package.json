@@ -1,18 +1,22 @@
 {
-  "name": "ottermator",
-  "version": "0.0.24-alpha",
+  "name": "otter",
+  "version": "1.0.0-alpha0",
   "description": "Microservice Code Generator",
   "main": "index.js",
   "scripts": {
     "example:01": "cd examples/01-hello-world && ts-node --project ../tsconfig.json -r tsconfig-paths/register src/index.ts",
-    "example:02": "cd examples/02-basic-authentication && ts-node --project ../tsconfig.json -r tsconfig-paths/register src/index.ts"
+    "example:02": "cd examples/02-basic-authentication && ts-node --project ../tsconfig.json -r tsconfig-paths/register src/index.ts",
+    "example:03": "cd examples/03-custom-errors && ts-node --project ../tsconfig.json -r tsconfig-paths/register src/index.ts"
   },
   "keywords": [
     "code",
     "generator",
     "microservice"
   ],
-  "author": "TotalTechGeek",
+  "contributors": [
+    "Austin Donovan",
+    "Jesse Mitchell"
+  ],
   "license": "BSD-2-Clause",
   "dependencies": {
     "ajv": "^8.10.0",

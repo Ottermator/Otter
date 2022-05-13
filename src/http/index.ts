@@ -6,3 +6,4 @@ export * from './http-binding-info';
 export * from './http-pipeline-input';
 export * from './http-controller';
 export * from './http-error';
+export * from './http-status';
